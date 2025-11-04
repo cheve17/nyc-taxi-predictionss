@@ -1,8 +1,9 @@
-﻿from prefect import flow, task
+﻿from prefect import flow, task, get_run_logger
 
 @task
 def say_hi():
-    print("✅ Prefect task ok")
+    logger = get_run_logger()
+    logger.info("Prefect task ok")  # SOLO ASCII
 
 @flow(name="training_challenger_flow")
 def training_challenger_flow():
